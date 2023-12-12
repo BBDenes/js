@@ -4,65 +4,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Darts Points Counter</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            height: 100vh;
-            margin: 0;
-            background-color: #16294a;
-        }
-        
-        #dartboard {
-            text-align: center;
-        }
-        
-        .menu{
-            height: 100vh;
-            display: grid;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .players{
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 3rem;
-        }
-        
-        .scoreboard{
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-        }
-
-        #player1, #player2 {
-            margin-top: 20px;
-            flex-shrink: 0;
-            flex-grow: 0;
-        }
-
-        button {
-            width: 60px;
-            height: 60px;
-            margin: 5px;
-            font-size: 18px;
-            cursor: pointer;
-        }
-    </style>
+    <link rel="stylesheet" href="stylesheets/main.css">
+    <link rel="stylesheet" href="stylesheets/menu.css">
 </head>
 <body>
-    <div class="menu">
-        <div class="game-type">
-            <input type="radio" id="game_101" name="game_number" class="game_number" value="301" data-gtm-form-interact-field-id="2">
-            <label for="game_101"style='cursor: pointer;'>101</label>
-            <input type="radio" id="game_301" name="game_number" class="game_number" value="301" data-gtm-form-interact-field-id="2">
-            <label for="game_301"style='cursor: pointer;'>301</label>
-            <input type="radio" id="game_501" name="game_number" class="game_number" value="301" data-gtm-form-interact-field-id="2">
-            <label for="game_501"style='cursor: pointer;'>501</label>
-            <input type="radio" id="game_cricket" name="game_number" class="game_number" value="301" data-gtm-form-interact-field-id="2">
-            <label for="game_cricket"style='cursor: pointer;'>Cricket</label>
+    <div class="menu_container">
+        <div class="menu">
+            <div class="game_type">
+                <input type="radio" id="game_101" name="game_number" class="game_number" value="101" data-gtm-form-interact-field-id="2">
+                <label class="game_btn" for="game_101"style='cursor: pointer;'>101</label>
+                <input type="radio" id="game_301" name="game_number" class="game_number" value="301" data-gtm-form-interact-field-id="2">
+                <label class="game_btn" for="game_301"style='cursor: pointer;'>301</label>
+                <input type="radio" id="game_501" name="game_number" class="game_number" value="501" data-gtm-form-interact-field-id="2">
+                <label class="game_btn" for="game_501"style='cursor: pointer;'>501</label>
+                <input type="radio" id="game_cricket" name="game_number" class="game_number" value="cricket" data-gtm-form-interact-field-id="2">
+                <label class="game_btn" for="game_cricket"style='cursor: pointer;'>Cricket</label>
+            </div>
+            <div class="start-sets">
+                <label>Sets</label>
+                <div class="input-dropdown">
+                    <i class="fa fa-angle-down"></i>
+                    <select id="amount_sets" name="amount_sets">
+                        <option value="none">No sets</option>
+                        <optgroup label="Best of "></optgroup>
+                        <option value="b 3">3 sets</option>
+                        <option value="b 5">5 sets</option>
+                        <option value="b 7">7 sets</option>
+                        <option value="b 9">9 sets</option>
+                        <option value="b 11">11 sets</option>
+                        <option value="b 13">13 sets</option>
+                        <option value="b 15">15 sets</option>
+                        <option value="b 17">17 sets</option>
+                        <option value="b 21">21 sets</option>
+                        <optgroup label="First to "></optgroup>
+                        <option value="f 1">1 set</option>
+                        <option value="f 2">2 sets</option>
+                        <option value="f 3">3 sets</option>
+                        <option value="f 4">4 sets</option>
+                        <option value="f 5">5 sets</option>
+                        <option value="f 6">6 sets</option>
+                        <option value="f 7">7 sets</option>
+                        <option value="f 8">8 sets</option>
+                        <option value="f 9">9 sets</option>
+                        <option value="f 10">10 sets</option>
+                        <option value="f 11">11 sets</option>
+                        <option value="f 12">12 sets</option>
+                        <option value="f 13">13 sets</option>
+                        <option value="f 14">14 sets</option>
+                        <option value="f 15">15 sets</option>
+                        <option value="f 16">16 sets</option>
+                        <option value="f 17">17 sets</option>
+                        <option value="f 18">18 sets</option>
+                        <option value="f 19">19 sets</option>
+                        <option value="f 20">20 sets</option>
+                        <option value="f 21">21 sets</option>
+                    </select>
+                </div>
+                </div>
         </div>
     </div>
     <div id="dartboard">
