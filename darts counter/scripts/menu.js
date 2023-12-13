@@ -1,6 +1,7 @@
 const dartboard = document.getElementById('dartboard');
 dartboard.style.display = 'none';
 const menuButtons = document.getElementsByClassName("game_btn");
+const playerField = document.getElementById("input_player");
 
 for (let i = 0; i < menuButtons.length; i++) {
     const e = menuButtons[i];
@@ -19,4 +20,9 @@ function refreshButtons(ind) {
             
         }
     }
+}
+
+function addPlayer(name) {
+    const players = document.getElementById('players');
+    let newContainer = players
 }

@@ -31,7 +31,7 @@ body {
     flex-grow: 0;
 }
 
-button {
+#dartboard button {
     width: 60px;
     height: 60px;
     margin: 5px;

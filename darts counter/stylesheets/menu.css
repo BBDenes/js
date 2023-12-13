@@ -33,6 +33,16 @@
     color: white;
 }
 
+.start-sets{
+    margin-left: 5%;
+    width: 48;
+    float: left;
+}
+.start-leg{
+    width: 50%;
+    float: right;
+}
+
 .game_number{
     display: none;
 }
