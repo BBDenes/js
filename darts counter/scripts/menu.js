@@ -11,6 +11,13 @@ for (let i = 0; i < menuButtons.length; i++) {
     
 }
 
+document.getElementById('addButton').addEventListener('mousedown', ()=>{
+    const name = document.getElementById('input_player').value;
+    addPlayer(name);
+});
+
+
+
 function refreshButtons(ind) {
     for (let i = 0; i < menuButtons.length; i++) {
         if (i == ind) {
@@ -23,6 +30,43 @@ function refreshButtons(ind) {
 }
 
 function addPlayer(name) {
-    const players = document.getElementById('players');
-    let newContainer = players
+    if(inPlayers(name)){
+        alert("Ilyen nevű játékos már van");
+        return;
+    }
+    players.push({"name":name});
+
+    const playersDiv = document.getElementsByClassName('player_list')[0];
+    const newContainer = document.createElement('div');
+    const newName = document.createElement('p');
+    const newButton = document.createElement('button');                 //táblával megcsinálni, egyszerűbb
+    newName.classList.add('player_name');
+    newContainer.classList.add('player_container')
+    newButton.classList.add('remove_player');
+    newButton.classList.add(players.length-1);
+    newName.innerText = name[0].toUpperCase() + name.slice(1);
+    newButton.innerText = "Törlés"
+    newContainer.appendChild(newName);
+    newContainer.appendChild(newButton);
+    playersDiv.appendChild(newContainer);
+
+
+    for (let i = 0; i < document.getElementsByClassName('remove_player').length; i++) {
+        const element = document.getElementsByClassName('remove_player')[i];
+        element.addEventListener('mousedown', ()=>{removePlayer(element.classList[1])})
+    }
+
+}
+
+function removePlayer(ind) {
+    console.log(ind);
+}
+
+function inPlayers(name){
+    for (const player of players) {
+        if(player.name == name){
+            return true
+        }
+    }
+    return false
 }

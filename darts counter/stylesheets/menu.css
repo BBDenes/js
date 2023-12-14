@@ -46,3 +46,7 @@
 .game_number{
     display: none;
 }
+
+.menu .player_list .player_container{
+    display: flex;
+}
