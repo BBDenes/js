@@ -45,16 +45,13 @@ function addPlayer(name) {
     newButton.classList.add('remove_player');
     newButton.classList.add(players.length-1);
     newName.innerText = name[0].toUpperCase() + name.slice(1);
+    newButton.addEventListener('mousedown', ()=>{removePlayer(newButton.classList[1])})
     newButton.innerText = "Törlés"
     newContainer.appendChild(newName);
     newContainer.appendChild(newButton);
     playersDiv.appendChild(newContainer);
 
 
-    for (let i = 0; i < document.getElementsByClassName('remove_player').length; i++) {
-        const element = document.getElementsByClassName('remove_player')[i];
-        element.addEventListener('mousedown', ()=>{removePlayer(element.classList[1])})
-    }
 
 }
 
