@@ -1,11 +1,7 @@
-function template(player, {score, legs, sets} = {}){
-    return(
-        `
-        <h2>${player[0].toUpperCase() + player.slice(1)}</h2>
-        <div class="scoreboard">
-            <h3 id="score${player}">Score: ${score}</h3>
-            <p class="leg${player}">Legs: ${legs}</p>
-            <p class="set${player}">Sets: ${sets}</p>
-        </div>
-    `)
-}
+import players from "./players.js";
+parseURL(decodeURI(window.location.search));
+let gameType = "501";
+let set = {type: "b", amount: 3};
+let leg = {type: "b", amount: 3};
+console.log(players);
+

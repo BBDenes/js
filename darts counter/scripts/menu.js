@@ -1,5 +1,8 @@
+import players from "./players.js";
+
 const menuButtons = document.getElementsByClassName("game_btn");
 const playerField = document.getElementById("input_player");
+refreshButtons(2)
 
 for (let i = 0; i < menuButtons.length; i++) {
     const e = menuButtons[i];
@@ -31,7 +34,7 @@ function addPlayer(name) {
         alert("Ilyen nevű játékos már van");
         return;
     }
-    players.push({"name":name});
+    players.push(name);
 
     const playersDiv = document.getElementsByClassName('player_list')[0];
     const newContainer = document.createElement('div');
@@ -48,8 +51,9 @@ function addPlayer(name) {
     newContainer.appendChild(newButton);
     playersDiv.appendChild(newContainer);
 
-
-
+    document.getElementById("helperInput").value = players.join("/");
+    console.log(players);
+    
 }
 
 function removePlayer(ind) {
@@ -59,10 +63,9 @@ function removePlayer(ind) {
     if (node.parentNode) {
         node.parentNode.removeChild(node);
     }
+    document.getElementById("helperInput").value = players.join("/");
 
 }
-
-
 
 function inPlayers(name){
     for (const player of players) {
@@ -72,3 +75,4 @@ function inPlayers(name){
     }
     return false
 }
+

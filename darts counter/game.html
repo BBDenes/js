@@ -10,7 +10,7 @@
     <h1>Darts Points Counter (2 Players)</h1>
 
     <div class="dartboard">
-        <svg id="board" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" width="787px" height="774px" viewBox="0 0 787 774" enable-background="new 0 0 787 774" xml:space="preserve">
+        <svg id="board" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px"  viewBox="0 0 787 774" enable-background="new 0 0 787 774" xml:space="preserve">
             <g id="areas">
                 <g id="miss">
                     <circle id="miss" fill="#000000" cx="401.5" cy="389" r="385"/>
@@ -94,22 +94,15 @@
     </div>
 
     <div class="players">
-        <div id="player1">
-            <h2>Player 1</h2>
-            <div class="scoreboard">
-                <h3 id="score1">Score: 501</h3>
-                <p class="leg1">Legs: 0</p>
-                <p class="set1">Sets: 0</p>
-            </div>
-        </div>
-        
+        <table class="playersTable"></table>
     </div>
 
     <button onclick="resetGame()">Reset Game</button>
     <button onclick="resetMatch()">Reset Match</button>
 
+    <script src="scripts/utils.js"></script>
+    <script type = "module" src="scripts/init.js"></script>
     <script src="scripts/dartBoard.js"></script>
-    <script src="scripts/init.js"></script>
 
 </body>
 </html>
