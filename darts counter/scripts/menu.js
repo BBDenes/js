@@ -1,5 +1,3 @@
-const dartboard = document.getElementById('dartboard');
-dartboard.style.display = 'none';
 const menuButtons = document.getElementsByClassName("game_btn");
 const playerField = document.getElementById("input_player");
 

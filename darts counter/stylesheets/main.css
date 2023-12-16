@@ -5,10 +5,18 @@ body {
     background-color: #16294a;
 }
 
-.dartboard #board{
+.dartboard {
     float: left;
     width: 40%;
     height: 70vh;
+    overflow: hidden;
+    text-align: center;
+}
+
+#board{
+    width: 100%;
+    height: fit-content;
+    margin-bottom: 2rem;
 }
 
 

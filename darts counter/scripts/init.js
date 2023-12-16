@@ -1,12 +1,11 @@
-function template(playerNum, {score, legs, sets} = {}){
+function template(player, {score, legs, sets} = {}){
     return(
-        `<div id="player${playerNum}">
-            <h2>Player 2</h2>
-            <div class="scoreboard">
-                <h3 id="score1">Score: 501</h3>
-                <p class="leg1">Legs: 0</p>
-                <p class="set1">Sets: 0</p>
-            </div>
-            <input type="number">
-        </div>`)
+        `
+        <h2>${player[0].toUpperCase() + player.slice(1)}</h2>
+        <div class="scoreboard">
+            <h3 id="score${player}">Score: ${score}</h3>
+            <p class="leg${player}">Legs: ${legs}</p>
+            <p class="set${player}">Sets: ${sets}</p>
+        </div>
+    `)
 }

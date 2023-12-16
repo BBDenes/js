@@ -8,10 +8,10 @@
 </head>
 <body>
     <div class="menu_container">
-        <div class="menu">
+        <form class="menu" method="get" action="/game.html">
             <div class="game_type">
                 <input type="radio" id="game_101" name="game_number" class="game_number" value="101" data-gtm-form-interact-field-id="2">
-                <label class="game_btn" for="game_101"style='cursor: pointer;'>101</label>
+                <label class="game_btn selected" for="game_101"style='cursor: pointer;'>101</label>
                 <input type="radio" id="game_301" name="game_number" class="game_number" value="301" data-gtm-form-interact-field-id="2">
                 <label class="game_btn" for="game_301"style='cursor: pointer;'>301</label>
                 <input type="radio" id="game_501" name="game_number" class="game_number" value="501" data-gtm-form-interact-field-id="2">
@@ -106,8 +106,8 @@
                 <button id="addButton">Add Player</button>
             </div>
             <div class="player_list"></div>
-            <button class="startButton">Játék indítása</button>
-        </div>
+            <button type="submit" class="startButton" onclick="window.location.href='/game.html'">Játék indítása</button>
+        </form>
     </div>
     <script src="scripts/players.js"></script>
     <script src="scripts/menu.js"></script>
