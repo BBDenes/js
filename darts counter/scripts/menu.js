@@ -17,7 +17,6 @@ document.getElementById('addButton').addEventListener('mousedown', ()=>{
 });
 
 
-
 function refreshButtons(ind) {
     for (let i = 0; i < menuButtons.length; i++) {
         if (i == ind) {
@@ -42,10 +41,10 @@ function addPlayer(name) {
     const newButton = document.createElement('button');                 //táblával megcsinálni, egyszerűbb
     newName.classList.add('player_name');
     newContainer.classList.add('player_container')
+    newContainer.id = players.length-1;
     newButton.classList.add('remove_player');
-    newButton.classList.add(players.length-1);
     newName.innerText = name[0].toUpperCase() + name.slice(1);
-    newButton.addEventListener('mousedown', ()=>{removePlayer(newButton.classList[1])})
+    newButton.addEventListener('mousedown', ()=>{removePlayer(newContainer.id)})
     newButton.innerText = "Törlés"
     newContainer.appendChild(newName);
     newContainer.appendChild(newButton);
@@ -57,7 +56,15 @@ function addPlayer(name) {
 
 function removePlayer(ind) {
     console.log(ind);
+    players.splice(ind,1);
+    const node = document.getElementById(String(ind));
+    if (node.parentNode) {
+        node.parentNode.removeChild(node);
+    }
+
 }
+
+
 
 function inPlayers(name){
     for (const player of players) {

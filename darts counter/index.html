@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Darts Points Counter</title>
-    <link rel="stylesheet" href="stylesheets/main.css">
+    <title>Menu</title>
     <link rel="stylesheet" href="stylesheets/menu.css">
 </head>
 <body>
@@ -107,35 +106,9 @@
                 <button id="addButton">Add Player</button>
             </div>
             <div class="player_list"></div>
+            <button class="startButton">Játék indítása</button>
         </div>
     </div>
-    <div id="dartboard">
-        <h1>Darts Points Counter (2 Players)</h1>
-        <div class="players">
-            <div id="player1">
-                <h2>Player 1</h2>
-                <div class="scoreboard">
-                    <h3 id="score1">Score: 501</h3>
-                    <p class="leg1">Legs: 0</p>
-                    <p class="set1">Sets: 0</p>
-                </div>
-                <input type="number">
-            </div>
-            <div id="player2">
-                <h2>Player 2</h2>
-                <div class="scoreboard">
-                    <h3 id="score1">Score: 501</h3>
-                    <p class="leg1">Legs: 0</p>
-                    <p class="set1">Sets: 0</p>
-                </div>
-                <input type="number">
-            </div>
-        </div>
-
-        <button onclick="resetGame()">Reset Game</button>
-        <button onclick="resetMatch()">Reset Match</button>
-    </div>
-
     <script src="scripts/players.js"></script>
     <script src="scripts/menu.js"></script>
     

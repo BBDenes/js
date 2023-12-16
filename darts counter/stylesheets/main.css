@@ -5,36 +5,10 @@ body {
     background-color: #16294a;
 }
 
-#dartboard {
-    text-align: center;
+.dartboard #board{
+    float: left;
+    width: 40%;
+    height: 70vh;
 }
 
 
-
-.players{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 3rem;
-}
-
-.scoreboard{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-}
-
-#player1, #player2 {
-    margin-top: 20px;
-    flex-shrink: 0;
-    flex-grow: 0;
-}
-
-#dartboard button {
-    width: 60px;
-    height: 60px;
-    margin: 5px;
-    font-size: 18px;
-    cursor: pointer;
-}
