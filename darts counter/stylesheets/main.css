@@ -5,12 +5,19 @@ body {
     background-color: #16294a;
 }
 
+.game{
+    display: grid;
+    grid-template-columns: 40% 60%;
+
+}
+
 .dartboard {
     float: left;
-    width: 40%;
+    width: 100%;
     height: 70vh;
     overflow: hidden;
     text-align: center;
+    max-width: 604px;
 }
 
 #board{
@@ -21,3 +28,9 @@ body {
 }
 
 
+
+.current{
+    width: 30px;
+    height: 30px;
+    background-color: red;
+}
