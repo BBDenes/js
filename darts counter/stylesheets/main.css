@@ -27,7 +27,12 @@ body {
     margin-bottom: 2rem;
 }
 
-
+.players{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    align-items: center;
+    justify-items: center;
+}
 
 .current{
     width: 30px;
