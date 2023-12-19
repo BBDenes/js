@@ -1,6 +1,9 @@
 function parseURL(url){
-    let raw =  url.split("&");
-    
+    const raw =  url.split("&");
+    const gameType = raw[0].slice(1, raw[0].length).split("=")[1];
+    const setType = {type: raw[1].split("=")[1].split("+")[0], amount: Number(raw[1].split("=")[1].split("+")[1])};
+    const legType = {type: raw[2].split("=")[1].split("+")[0], amount: Number(raw[2].split("=")[1].split("+")[1])};
+    return {gameType, setType, legType};
 }
 
 function template(player, {score, legs, sets} = {}){
@@ -14,5 +17,5 @@ function template(player, {score, legs, sets} = {}){
                 <p class="set${player}">Sets: ${sets}</p>
             </div>
         </div>
-    `)
+    `);
 }

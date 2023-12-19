@@ -29,7 +29,7 @@ body {
 
 .players{
     display: grid;
-    grid-template-columns: auto auto auto auto;
+    grid-template-columns: repeat(5, auto);
     align-items: center;
     justify-items: center;
 }
