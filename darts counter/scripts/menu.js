@@ -1,5 +1,3 @@
-import players from "./players.js";
-
 const menuButtons = document.getElementsByClassName("game_btn");
 const playerField = document.getElementById("input_player");
 refreshButtons(2)

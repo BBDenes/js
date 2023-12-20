@@ -95,26 +95,38 @@
         </div>
     
         <div class="players-container">
-            <div class="players">
-                <div class="current"></div>
-                <h2>Player1</h2>
-                <h3 id="score${player}">Score: 501</h3>
-                <p class="leg${player}">Legs: 2</p>
-                <p class="set${player}">Sets: 2</p>
-                <div class="current"></div>
-                <h2>Player2</h2>
-                <h3 id="scoreplayer2">Score: 501</h3>
-                <p class="legplayer2">Legs: 2</p>
-                <p class="setplayer2">Sets: 2</p>
-            </div>
+            <table class="playersTable">
+                <tr class="headers">
+                    <th></th>
+                    <th id="setTypeHeader">First to 3 sets</th>
+                    <th id="setsHeader">Sets</th>
+                    <th id="legsHeader">Legs</th>
+                    <th class="blank"></th>
+                </tr>
+                <tr class="player">
+                    <td><div class="current"></div></td>
+                    <td class="name"><h2 >Player1</h2></td>
+                    <td class="leg"><p class="leg${player}">2</p></td>
+                    <td class="set"><p class="set${player}">2</p></td>
+                    <td class="score"><h3 id="score${player}">501</h3></td>
+                </tr>
+                <tr class="player">
+                    <td><div class="current"></div></td>
+                    <td class="name"><h2 >Nagyon hosszú nevű player</h2></td>
+                    <td class="leg"><p class="leg${player}">2</p></td>
+                    <td class="set"><p class="set${player}">2</p></td>
+                    <td class="score"><h3 id="score${player}">501</h3></td>
+                </tr>
+            </table>
         </div>
     </div>
 
     <button onclick="resetGame()">Reset Game</button>
     <button onclick="resetMatch()">Reset Match</button>
 
+    <script src="scripts/players.js"></script>
     <script src="scripts/utils.js"></script>
-    <script type = "module" src="scripts/init.js"></script>
+    <script src="scripts/init.js"></script>
     <script src="scripts/dartBoard.js"></script>
 
 </body>
