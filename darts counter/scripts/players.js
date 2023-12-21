@@ -1,3 +1,7 @@
-const players = [
+let players = [
+
+]
+
+let game = [
 
 ]

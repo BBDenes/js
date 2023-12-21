@@ -14,6 +14,7 @@
     </div>
 
     <script src="scripts/graphEditor.js"></script>
+    <script src="scripts/viewport.js"></script>
     <script src="scripts/math/utils.js"></script>
     <script src="scripts/math/graph.js"></script>
     <script src="scripts/primitives/point.js"></script>
@@ -37,12 +38,16 @@
         const s4 = new Segment(p2, p3);
 
         const graph = new Graph([p1, p2, p3, p4], [s1, s2, s3,s4]);
-        const graphEditor = new GraphEditor(myCanvas, graph);
+        const viewport = new Viewport(myCanvas);
+        const graphEditor = new GraphEditor(viewport, graph);
 
         animate();
         function animate() {
             ctx.clearRect(0, 0, myCanvas.width, myCanvas.height);
+            ctx.save();
+            ctx.scale(1/viewport.zoom, 1/viewport.zoom);
             graphEditor.display();
+            ctx.restore();
             requestAnimationFrame(animate);
         }
     </script>

@@ -10,10 +10,12 @@ initPlayers();
 function initPlayers(){
     const {gameType, legType, setType, playerList} = parseURL(decodeURI(window.location.search));
     console.log(legType);
+    const tScore = gameType == "cricket"? null : Number(gameType);
+    const tsets = setType == "none" ? "-" : 0
     for (const player of playerList) {
-        const tScore = gameType == "cricket"? null : Number(gameType);
-        players.push({name:player, score:tScore, legs: 0, sets:0});
+        players.push({name:player, score:tScore, legs: 0, sets:tsets});
     }
+    game = players;
     refresh()
 
 }
@@ -27,7 +29,7 @@ function refresh() {
     <th id="legsHeader">Legs</th>
     <th class="blank"></th>
     </tr>`;
-    for (const player of players) {
+    for (const player of game) {
         playersTable.innerHTML += template(player)
     }
     const currBoxes = playersTable.getElementsByClassName("current")
