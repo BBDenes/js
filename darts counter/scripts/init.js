@@ -15,6 +15,9 @@ function initPlayers(){
     for (const player of playerList) {
         players.push({name:player, score:tScore, legs: 0, sets:tsets});
     }
+    if(players.length == 0){
+        players = backup;
+    }
     game = players;
     refresh()
 

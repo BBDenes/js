@@ -4,7 +4,7 @@ function parseURL(url){
     const gameType = raw[0].slice(1, raw[0].length).split("=")[1];
     const setType = {type: raw[1].split("=")[1].split("+")[0], amount: Number(raw[1].split("=")[1].split("+")[1])};
     const legType = {type: raw[2].split("=")[1].split("+")[0], amount: Number(raw[2].split("=")[1].split("+")[1])};
-    const rawPlayers = raw[raw.length-1].split("=")[1].split("%2F");
+    const rawPlayers = raw[3].split("=")[1].split("%2F");
     const playerList = rawPlayers.map(element => {
         return element.replace("+", " ");
     });
