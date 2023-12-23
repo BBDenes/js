@@ -26,6 +26,12 @@ class GraphEditor{
         }
     }
 
+    dispose(){
+        this.graph.dispose();
+        this.selected = null;
+        this.hovered = null;
+    }
+
     #addEventListeners(){
         this.canvas.addEventListener('mousedown', this.#handleMouseDown.bind(this));
         
@@ -61,8 +67,8 @@ class GraphEditor{
         }
     }
     #handleMouseMove(e){
-        this.mouse = this.viewport.getMouse(e);
-        this.hovered = getNearestPoint(this.mouse, this.graph.points);
+        this.mouse = this.viewport.getMouse(e, true);
+        this.hovered = getNearestPoint(this.mouse, this.graph.points, 10*this.viewport.zoom);
         if(this.dragging){
             this.selected.x = this.mouse.x;
             this.selected.y = this.mouse.y;

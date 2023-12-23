@@ -1,6 +1,5 @@
 const backup =[{name: "player1", score:501, legs:0, sets:0}, {name: "player2", score:501, legs:0, sets:0}];
-
-
+const {gameType, legType, setType, playerList} = parseURL(decodeURI(window.location.search));
 
 // let gameType = "501";
 // let set = {type: "b", amount: 3};
@@ -8,26 +7,26 @@ const backup =[{name: "player1", score:501, legs:0, sets:0}, {name: "player2", s
 initPlayers();
 
 function initPlayers(){
-    const {gameType, legType, setType, playerList} = parseURL(decodeURI(window.location.search));
-    console.log(legType);
+    console.log(setType);
     const tScore = gameType == "cricket"? null : Number(gameType);
     const tsets = setType == "none" ? "-" : 0
     for (const player of playerList) {
-        players.push({name:player, score:tScore, legs: 0, sets:tsets});
+        players.push(new Player(player, gameType));
     }
     if(players.length == 0){
         players = backup;
     }
     game = players;
-    refresh()
+    console.log(setType)
+    refreshNormal(setType);
 
 }
 
-function refresh() {
+function refreshNormal(setType) {
     const playersTable = document.getElementsByClassName('playersTable')[0];
     playersTable.innerHTML = `<tr class="headers">
     <th></th>
-    <th id="setTypeHeader">First to 3 sets</th>
+    <th id="setTypeHeader">${gameHeaderText(setType)}</th>
     <th id="setsHeader">Sets</th>
     <th id="legsHeader">Legs</th>
     <th class="blank"></th>
@@ -43,6 +42,15 @@ function refresh() {
         }
     }
 
+}
+
+function gameHeaderText(setType) {
+    if (setType.type == "f") {
+        return `First to ${setType.amount} sets`
+    }
+    else if (setType.type == "b") {
+        return `Best of ${setType.amount} sets`
+    }
 }
 
 

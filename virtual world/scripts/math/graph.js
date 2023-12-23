@@ -13,6 +13,23 @@ class Graph {
             point.draw(ctx);
         }
     }
+
+    static load(info){
+        const points = [];
+        const segments = [];
+
+        for (const pointInfo of info.points) {
+            points.push(new Point(pointInfo.x, pointInfo.y));
+        }
+        for (const segInfo of info.segments) {
+            segments.push(new Segment(
+                points.find((p) =>p.equals(segInfo.p1)),
+                points.find((p) =>p.equals(segInfo.p2))
+            ));
+        }
+
+        return new Graph(points, segments)
+    }
     
     addPoint(point){
         this.points.push(point);

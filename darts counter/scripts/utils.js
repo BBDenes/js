@@ -1,3 +1,12 @@
+let players = [
+
+]
+
+let game = [
+
+]
+
+
 function parseURL(url){
     const raw =  url.split("&");
     console.log(raw)
@@ -22,5 +31,9 @@ function template(player){
         <td class="score"><h3 id="score${player.name.replace(" ", "_")}">${player.score}</h3></td>
         </tr>`
     );
+}
+
+function refreshRoundPoints(player) {
+    document.getElementById('currentPoints').innerHTML = player.round.join(", ")
 }
 

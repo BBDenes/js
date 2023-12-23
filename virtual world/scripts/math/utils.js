@@ -14,3 +14,23 @@ function getNearestPoint(loc, points, threshold = 15) {
 function distance(a, b){
     return Math.hypot(a.x - b.x, a.y-b.y)
 }
+
+function add(p1, p2){
+    return new Point( p1.x+ p2.x, p1.y + p2.y);
+}
+
+function subV(p1, p2){
+    return new Point( p1.x- p2.x, p1.y - p2.y);
+}
+
+function scale(p, scale){
+    return new Point(p.x * scale ,p.y * scale);
+}
+
+function translate(loc, ang, offset){
+    return new Point(loc.x + Math.cos(ang) * offset, loc.y + Math.sin(ang) * offset)
+}
+
+function angle(p) {
+    return Math.atan2                                                                                                                                               
+}
