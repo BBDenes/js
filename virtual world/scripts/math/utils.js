@@ -32,5 +32,5 @@ function translate(loc, ang, offset){
 }
 
 function angle(p) {
-    return Math.atan2                                                                                                                                               
+    return Math.atan2(p.y, p.x)                                                                                                                                      
 }
