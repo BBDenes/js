@@ -14,7 +14,9 @@ function initPlayers(){
         players.push(new Player(player, gameType));
     }
     if(players.length == 0){
-        players = backup;
+        const p1 = new Player("Player1", gameType);
+        const p2 = new Player("Player2", gameType);
+        players = [p1, p2];
     }
     game = players;
     console.log(setType)
@@ -42,6 +44,7 @@ function refreshNormal(setType) {
         }
     }
 
+
 }
 
 function gameHeaderText(setType) {
@@ -50,6 +53,8 @@ function gameHeaderText(setType) {
     }
     else if (setType.type == "b") {
         return `Best of ${setType.amount} sets`
+    }else if(setType.type = "none"){
+        return `No sets`
     }
 }
 

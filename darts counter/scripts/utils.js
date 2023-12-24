@@ -9,10 +9,13 @@ let game = [
 
 function parseURL(url){
     const raw =  url.split("&");
-    console.log(raw)
     const gameType = raw[0].slice(1, raw[0].length).split("=")[1];
+    console.log(gameType)
     const setType = {type: raw[1].split("=")[1].split("+")[0], amount: Number(raw[1].split("=")[1].split("+")[1])};
     const legType = {type: raw[2].split("=")[1].split("+")[0], amount: Number(raw[2].split("=")[1].split("+")[1])};
+    if (raw[3] == undefined) {
+        raw[3] = "players=Player1%2FPlayer2%2FPlayer3"
+    }
     const rawPlayers = raw[3].split("=")[1].split("%2F");
     const playerList = rawPlayers.map(element => {
         return element.replace("+", " ");
@@ -37,3 +40,32 @@ function refreshRoundPoints(player) {
     document.getElementById('currentPoints').innerHTML = player.round.join(", ")
 }
 
+function undo(player){
+    game[currentPlayerIndex].round.pop();
+    refreshRoundPoints(game[currentPlayerIndex])
+}
+
+function nextPlayer() {
+    // const rowHeight = document.querySelector(".row").getBoundingClientRect().height;
+    // const div = document.querySelector(".current");
+
+    // div.style.translateY()
+
+    currentPlayerIndex++;
+    if (currentPlayerIndex >= game.length) {
+        currentPlayerIndex = 0;
+    }
+    console.log(game[currentPlayerIndex])
+}
+
+function winLeg(winner) {
+    if (legType.type == 'f') {
+        if (winner.legs + 1 == legType.amount) {
+            winSet(winner);
+            return;
+        }
+        winner.legs++;
+    }else if(legType == 'b'){
+        return;
+    }
+}
