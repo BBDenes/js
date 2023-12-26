@@ -21,6 +21,9 @@ function initPlayers(){
     game = players;
     console.log(setType)
     refreshNormal(setType);
+    
+    const box = document.querySelector(".current")
+    box.style.transform = `translateY(0)`;
 
 }
 

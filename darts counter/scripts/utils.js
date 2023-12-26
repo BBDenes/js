@@ -6,6 +6,15 @@ let game = [
 
 ]
 
+let currentPlayerIndex = 0;
+
+
+const needToWinBestOf = {
+    3: 2,
+    5: 3,
+    7: 4,
+    9: 7,
+}
 
 function parseURL(url){
     const raw =  url.split("&");
@@ -56,6 +65,12 @@ function nextPlayer() {
         currentPlayerIndex = 0;
     }
     console.log(game[currentPlayerIndex])
+
+    const box = document.querySelector(".current")
+    const rowHeight = document.querySelector(".player").getBoundingClientRect().height;
+    console.log(currentPlayerIndex * rowHeight);
+    box.style.transform = `translateY(${currentPlayerIndex * rowHeight})`;
+    console.log(box.style.transform)
 }
 
 function winLeg(winner) {
@@ -66,6 +81,12 @@ function winLeg(winner) {
         }
         winner.legs++;
     }else if(legType == 'b'){
-        return;
+        if (winner.legs +1 == legType.amount || legType.amount - winner.legs) {
+            
+        }
+    }
+
+    for (const player of game) {
+        player.resetScore()
     }
 }
