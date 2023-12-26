@@ -29,7 +29,6 @@ function parseURL(url){
     const playerList = rawPlayers.map(element => {
         return element.replace("+", " ");
     });
-    console.log(playerList)
     return {gameType, setType, legType, playerList};
 }
 
@@ -70,7 +69,6 @@ function nextPlayer() {
     const rowHeight = document.querySelector(".player").getBoundingClientRect().height;
     console.log(currentPlayerIndex * rowHeight);
     box.style.transform = `translateY(${currentPlayerIndex * rowHeight})`;
-    console.log(box.style.transform)
 }
 
 function winLeg(winner) {
@@ -80,13 +78,36 @@ function winLeg(winner) {
             return;
         }
         winner.legs++;
-    }else if(legType == 'b'){
-        if (winner.legs +1 == legType.amount || legType.amount - winner.legs) {
-            
+    }else if(legType.type == 'b'){
+        if (winner.legs +1 == legType.amount || winner.legs +1 == needToWinBestOf[legType.amount]) {
+            winSet(winner);
+            return;
         }
+        winner.legs++;
     }
 
     for (const player of game) {
+        player.resetScore();
+    }
+}
+
+function winSet(winner) {
+    if (setType.type == 'f') {
+        if (winner.sets + 1 == setType.amount) {
+            winGame(winner);
+            return;
+        }
+        winner.sets++;
+    }else if(setType.type == 'b'){
+        if (winner.sets +1 == setType.amount || winner.sets +1 == needToWinBestOf[setType.amount]) {
+            winGame(winner);
+            return;
+        }
+        winner.sets++;
+    }
+    
+    for (const player of game) {
         player.resetScore()
+        player.resetLegs();
     }
 }

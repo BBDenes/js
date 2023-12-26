@@ -1,7 +1,7 @@
 class Player{
     constructor(name, gameType){
         this.name = name;
-        this.gameType = gameType
+        this.gameType = gameType;
         this.sets = this.gameType=="cricket" ? null : 0;
         this.legs = this.gameType=="cricket" ? null : 0;
         this.score = this.gameType == "cricket"? null : Number(this.gameType);
@@ -11,6 +11,7 @@ class Player{
     dart(v){
         this.round.push(v);
         if (this.#eval() > this.score || this.#eval()+1 == this.score) { //bust
+            this.round = [];
             nextPlayer();
             return;
         }
@@ -18,6 +19,7 @@ class Player{
         if(this.#eval() == this.score ){ //pontosan annyi
             if (this.round[this.round.length-1][0] == "d" || this.round[this.round.length-1][0] == "bull") { //megdobta
                 winLeg(this);
+                nextPlayer()
                 this.round = [];
                 return;
             }else{
@@ -37,14 +39,17 @@ class Player{
     }
 
     resetScore(){
-        this.score = this.gameType == "cricket"? null : Number(this.gameType);
+        // this.score = this.gameType == "cricket"? null : Number(this.gameType);
+        this.score = Number(this.gameType);
+    }
+    resetLegs(){
+        this.legs = 0
     }
 
     #eval(){
         let sum = 0;
         for (let i = 0; i < this.round.length; i++) {
             const point = this.round[i].split(" ");
-            console.log(point);
             switch (point[0]) {
                 case "miss":
                     sum += 0;
@@ -73,13 +78,15 @@ class Player{
             //     sum += Number(point[1]) *2;   
             // }else sum+= Number(point[1]);
         }
+        console.log(sum);
+        console.log(this.score == sum);
         return sum;
     }
 
-    //todo: Tesztelni mülszik e a dupla kiszálló
-    //kiszálló példa
-    //szett számláló
+    //todo: Tesztelni mülszik e a dupla kiszálló elvileg ok
+    //kiszálló példa eh
+    //best of 3 több plazernél? (= megjavítani a best ofot)
     //krikett
-    //megjavítani a player kijelzőt
+    //megjavítani a player kijelzőt (= megjevítani a refresh függvényt)
 
 }

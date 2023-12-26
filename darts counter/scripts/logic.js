@@ -7,6 +7,6 @@ function throwDart(v){
     game[currentPlayerIndex].dart(v)
     
     refreshRoundPoints(game[currentPlayerIndex])
-    refreshNormal(setType);
+    // refreshNormal(setType);
 }
 
