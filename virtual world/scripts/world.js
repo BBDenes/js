@@ -1,7 +1,7 @@
 class World{
     constructor(graph, roadWidth = 100, roundness = 10){
         this.graph = graph;
-        this.roadWidth = 100;
+        this.roadWidth = roadWidth;
         this.roadRoundness = roundness;
 
         this.envelopes = [];
@@ -21,7 +21,7 @@ class World{
 
     draw(ctx){
         for (const env of this.envelopes) {
-            env.draw(ctx, {fill: "#BBB", stroke:"#BBB" });
+            env.draw(ctx, {fill: "#BBB", stroke:"#BBB" , lineWidth: 15 });
         }
         for (const seg of this.roadBorders) {
             seg.draw(ctx, {color:"white", width:4})
