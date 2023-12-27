@@ -3,10 +3,10 @@ const {gameType, legType, setType, playerList} = parseURL(decodeURI(window.locat
 // let gameType = "501";
 // let set = {type: "b", amount: 3};
 // let leg = {type: "b", amount: 3};
-initPlayers();
+let gameLogic = initPlayers();
 
 function initPlayers(){
-    console.log(setType);
+    console.log(legType);
     for (const player of playerList) {
         players.push(new Player(player, gameType));
     }
@@ -16,21 +16,23 @@ function initPlayers(){
         players = [p1, p2];
     }
     game = players;
+
+    if (gameType == "cricket") {
+        const cricket = new Cricket(game);
+        return cricket;
+    }
     console.log(setType)
     refreshNormal(setType);
     
-    const box = document.querySelector(".current")
-    box.style.transform = `translateY(0)`;
-
 }
 
 function refreshNormal(setType) {
     const playersTable = document.getElementsByClassName('playersTable')[0];
     playersTable.innerHTML = `<tr class="headers">
     <th></th>
-    <th id="setTypeHeader">${gameHeaderText(setType)}</th>
-    <th id="setsHeader">Sets</th>
-    <th id="legsHeader">Legs</th>
+    <th class="header" id="setTypeHeader">${gameHeaderText(setType)}</th>
+    <th class="header" id="setsHeader">Sets</th>
+    <th class="header" id="legsHeader">Legs</th>
     <th class="blank"></th>
     </tr>`;
     for (const player of game) {
@@ -42,8 +44,10 @@ function refreshNormal(setType) {
             // box.parentNode.removeChild(box)
             box.style.display = "none"
         }
+        box.classList.remove("anim");   
+        const rowHeight = document.querySelector(".player").getBoundingClientRect().height;
+        box.style.transform = `translateY(${currentPlayerIndex * rowHeight}px)`;
     }
-
 
 }
 

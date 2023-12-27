@@ -14,20 +14,21 @@ class Polygon{
             for (const seg of polys[i].segments) {
                 let keep = true;
                 for (let j = 0; j < polys.length; j++) {
-                    if (i != j) {
-                        if (polys[j].containsSegment(seg)) {
-                            keep = false;
-                            this.break;
-                        }
+                if (i != j) {
+                    if (polys[j].containsSegment(seg)) {
+                        keep = false;
+                        break;
                     }
                 }
+                }
                 if (keep) {
-                    keptSegments.push(seg)
+                keptSegments.push(seg);
                 }
             }
         }
-        return keptSegments
+      return keptSegments;
     }
+    
 
     static multiBreak(polys){
         for (let i = 0; i < polys.length-1; i++) {

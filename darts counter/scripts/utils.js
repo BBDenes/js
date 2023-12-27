@@ -58,6 +58,7 @@ function nextPlayer() {
     // const div = document.querySelector(".current");
 
     // div.style.translateY()
+    refreshNormal(setType)
 
     currentPlayerIndex++;
     if (currentPlayerIndex >= game.length) {
@@ -66,9 +67,11 @@ function nextPlayer() {
     console.log(game[currentPlayerIndex])
 
     const box = document.querySelector(".current")
+    box.classList.add("anim");
     const rowHeight = document.querySelector(".player").getBoundingClientRect().height;
     console.log(currentPlayerIndex * rowHeight);
-    box.style.transform = `translateY(${currentPlayerIndex * rowHeight})`;
+    box.style.transform = `translateY(${currentPlayerIndex * rowHeight}px)`;
+    
 }
 
 function winLeg(winner) {
@@ -79,11 +82,20 @@ function winLeg(winner) {
         }
         winner.legs++;
     }else if(legType.type == 'b'){
-        if (winner.legs +1 == legType.amount || winner.legs +1 == needToWinBestOf[legType.amount]) {
+        winner.legs++;
+        let legsPlayed = 0
+        game.forEach(player => {legsPlayed += Number(player.legs)});
+        let remainingLegs = legType.amount - legsPlayed;
+        if (winner.legs == legType.amount || (winner.legs > remainingLegs && checkDraw("legs"))) {
+            
             winSet(winner);
             return;
         }
-        winner.legs++;
+        if (legsPlayed == legType.amount) {
+            if (checkDraw("legs")) {
+                winSet(checkDraw("legs"));
+            }
+        }
     }
 
     for (const player of game) {
@@ -99,15 +111,45 @@ function winSet(winner) {
         }
         winner.sets++;
     }else if(setType.type == 'b'){
-        if (winner.sets +1 == setType.amount || winner.sets +1 == needToWinBestOf[setType.amount]) {
+        game.forEach(player => {test += Number(player.sets)});
+        let remainingSets = setType.amount - setsPlayed;
+        if (winner.sets +1 == setType.amount || winner.sets + 1 > remainingSets) {
             winGame(winner);
             return;
         }
         winner.sets++;
+        for (const player of game) {
+            let max = 0;
+            if (condition) {
+                
+            }
+        }
     }
     
     for (const player of game) {
         player.resetScore()
         player.resetLegs();
+    }
+}
+
+function checkDraw(type){
+    const winners = [];
+    let max = 0;
+    for (const player of game) {
+        if (player[type] > max) {
+            max = player[type];
+        }
+    }
+    for (const player of game) {
+        if (player[type] == max) {
+            winners.push(player)
+        }
+    }
+    if (winners.length == 1) {
+        console.log("Winner: ", winners[0]);
+        return winners[0];
+    }else{
+        console.log("draw")
+        return null
     }
 }

@@ -4,8 +4,9 @@ class Player{
         this.gameType = gameType;
         this.sets = this.gameType=="cricket" ? null : 0;
         this.legs = this.gameType=="cricket" ? null : 0;
-        this.score = this.gameType == "cricket"? null : Number(this.gameType);
+        this.score = this.gameType == "cricket"? 0 : Number(this.gameType);
         this.round = [];
+        this.sectors = this.gameType == "cricket"? {} : null;
     }
 
     dart(v){
@@ -24,7 +25,6 @@ class Player{
                 return;
             }else{
                 nextPlayer();
-                refreshNormal(setType)
                 this.round = [];
                 return
             }
@@ -32,7 +32,6 @@ class Player{
         if (this.round.length == 3) { // megdobta a 3 nyilat
             this.score -= this.#eval();
             nextPlayer();
-            refreshNormal(setType)
             this.round = [];
             return
         }
@@ -83,10 +82,9 @@ class Player{
         return sum;
     }
 
-    //todo: Tesztelni mülszik e a dupla kiszálló elvileg ok
+    //todo: 
     //kiszálló példa eh
-    //best of 3 több plazernél? (= megjavítani a best ofot)
+    //winner screen
     //krikett
-    //megjavítani a player kijelzőt (= megjevítani a refresh függvényt)
 
 }

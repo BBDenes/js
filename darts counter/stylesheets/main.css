@@ -32,17 +32,17 @@ table, th, td {
     border-collapse: collapse;
 }
 
-table .leg, table .set, table .score{
+table .leg, table .set, table .score, .cell{
     background-color: greenyellow;
     text-align: center;
     font-size: 1.2rem;
 }
 
-.current{
+.anim{
     transition: transform 1s ease-in-out;
 }
 
-#setTypeHeader, #setsHeader, #legsHeader, th.blank{
+.header, th.blank{
     background-color: grey;
 }
 
