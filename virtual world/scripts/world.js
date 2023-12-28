@@ -69,9 +69,10 @@ class World{
             bases.push(new Envelope(seg, this.buildingWidth).poly);
         }
 
+        const eps = 0.01
         for (let i = 0; i < bases.length-1; i++) {
             for (let j = i+1; j < bases.length; j++) {
-                if (bases[i].intersectsPoly(bases[j])) {
+                if (bases[i].intersectsPoly(bases[j]) || bases[i].distanceToPoly(bases[j]) < this.spacing - eps) {
                     bases.splice(j, 1);
                     j--;
                 }
@@ -91,7 +92,8 @@ class World{
         const illegalPolys = [...this.buildings, ...this.envelopes.map((e) => e.poly)];
 
         const trees = [];
-        while (trees.length < count) {
+        let tryCount = 0
+        while (tryCount < 100) {
             const p = new Point(lerp(left, right, Math.random()), lerp(top, bottom, Math.random()));
             let keep = true;
             for (const poly of illegalPolys) {
@@ -111,8 +113,21 @@ class World{
             }
 
             if (keep) {
-                trees.push(p);
+                let closeToSomething = false;
+                for (const poly of illegalPolys) {
+                    if (poly.distanceToPoint(p) < this.treeSize*2) {
+                        closeToSomething = true;
+                        break;
+                    }
+                }
+                keep = closeToSomething;
             }
+
+            if (keep) {
+                trees.push(p);
+                tryCount = 0;
+            }
+            tryCount++;
         }
         return trees;
     }
